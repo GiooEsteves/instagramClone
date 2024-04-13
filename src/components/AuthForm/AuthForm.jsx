@@ -1,8 +1,22 @@
 import { Box, VStack, Image, Input, Button, Flex, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AuthForm = () => {
     const [isLogin, setIsLogin] = useState(true)
+    const navigate = useNavigate()
+    const [inputs, setInputs] = useState({
+        email: '',
+        password: '',
+        confirmPassword: ''
+    })
+    const handleAuth = ()=>{
+        if(!inputs.email || !inputs.password){
+            alert("Por favor preencha todos os campos.")
+            return
+        }
+        navigate("/")
+    }
     return <>
         <Box border={"1px solid gray"} borderRadius={4} padding={5}>
             <VStack spacing={4}>
@@ -11,21 +25,27 @@ const AuthForm = () => {
                     placeholder='Telefone, nome de usuário ou email'
                     fontSize={9}
                     type='email'
+                    value={inputs.email}
+                    onChange={(e) => setInputs({...inputs, email:e.target.value})}
                 />
                 <Input 
                     placeholder='Senha'
                     fontSize={9}
                     type='password'
+                    value={inputs.password}
+                    onChange={(e) => setInputs({...inputs, password:e.target.value})}
                 />
                 {!isLogin ? (
                     <Input 
                     placeholder='Confirme a senha'
                     fontSize={9}
-                    type='password'
+                    type='confirmPassword'
+                    value={inputs.confirmPassword}
+                    onChange={(e) => setInputs({...inputs, confirmPassword:e.target.value})}
                     />
                 ) : null}
 
-                <Button w={"full"} colorScheme='blue' size={"sm"} fontSize={14}>
+                <Button w={"full"} colorScheme='blue' size={"sm"} fontSize={14} onClick={handleAuth}>
                     {isLogin? "Entrar" : "Cadastre-se"}
                 </Button>
                 <Flex alignItems={"center"} justifyContent={"center"} my={4} gap={1} w={"full"}>
