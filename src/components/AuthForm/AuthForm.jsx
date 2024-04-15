@@ -8,7 +8,8 @@ const AuthForm = () => {
     const [inputs, setInputs] = useState({
         email: '',
         password: '',
-        confirmPassword: ''
+        nomeCompleto: '',
+        nomedeUsuario: ''
     })
     const handleAuth = ()=>{
         if(!inputs.email || !inputs.password){
@@ -21,6 +22,8 @@ const AuthForm = () => {
         <Box border={"1px solid gray"} borderRadius={4} padding={5}>
             <VStack spacing={4}>
                 <Image src='/logo.png' h={24} cursor={"pointer"} alt='Instagram'/>
+                
+                {isLogin ? <>
                 <Input 
                     placeholder='Telefone, nome de usuário ou email'
                     fontSize={9}
@@ -35,15 +38,38 @@ const AuthForm = () => {
                     value={inputs.password}
                     onChange={(e) => setInputs({...inputs, password:e.target.value})}
                 />
-                {!isLogin ? (
+                </>: null}
+
+                {!isLogin ? <>
                     <Input 
-                    placeholder='Confirme a senha'
-                    fontSize={9}
-                    type='confirmPassword'
-                    value={inputs.confirmPassword}
-                    onChange={(e) => setInputs({...inputs, confirmPassword:e.target.value})}
+                    placeholder='Número do celular ou email'
+                    fontSize={11}
+                    type='email'
+                    value={inputs.email}
+                    onChange={(e) => setInputs({...inputs, email:e.target.value})}
                     />
-                ) : null}
+                    <Input 
+                    placeholder='Nome completo'
+                    fontSize={11}
+                    type='nomeCompleto'
+                    value={inputs.nomeCompleto}
+                    onChange={(e) => setInputs({...inputs, nomeCompleto:e.target.value})}
+                    />
+                    <Input 
+                    placeholder='Nome de usuário'
+                    fontSize={11}
+                    type='nomedeUsuario'
+                    value={inputs.nomedeUsuario}
+                    onChange={(e) => setInputs({...inputs, nomedeUsuario:e.target.value})}
+                    />
+                    <Input 
+                    placeholder='Senha'
+                    fontSize={11}
+                    type='password'
+                    value={inputs.password}
+                    onChange={(e) => setInputs({...inputs, password:e.target.value})}
+                    />
+                </> : null}
 
                 <Button w={"full"} colorScheme='blue' size={"sm"} fontSize={14} onClick={handleAuth}>
                     {isLogin? "Entrar" : "Cadastre-se"}
