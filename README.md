@@ -30,10 +30,6 @@
             <img align="center" alt="React.js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
             React
         </li>
-        <li>
-            <img align="center" alt="Node.js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
-            NodeJs
-        </li>
     </ul>
     <h2>Instalação:</h2>
     <pre>
