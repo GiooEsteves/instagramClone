@@ -1,7 +1,10 @@
-import { Avatar, Box, Flex, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, Text, useDisclosure} from "@chakra-ui/react"
+import { Avatar, Box, Divider, Flex, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Text, 
+VStack, useDisclosure} from "@chakra-ui/react"
 import { AiFillHeart } from "react-icons/ai"
-import { FaComment } from "react-icons/fa"
 import { MdDelete } from "react-icons/md"
+import { FaComment } from "react-icons/fa"
+import Comment from "../Comment/Comment"
+import PostFooter from "../FeedPosts/PostFooter"
 
 const ProfilePost = ({img}) => {
 	const { isOpen, onOpen, onClose} = useDisclosure()
@@ -52,6 +55,14 @@ const ProfilePost = ({img}) => {
 									<MdDelete size={20} cursor={"pointer"}/>
 								</Box>
 							</Flex>
+							<Divider my={4} bg={"gray.500"} />
+							<VStack w={"full"} alignItems={"start"} maxH={"350px"} overflow={"auto"} >
+								<Comment createdAt={"12h"} username={"mon"} profilepic={""} text={"lindo"} />
+								<Comment createdAt={"5h"} username={"o11o"} profilepic={""} text={"absolut cinema"} />
+								<Comment createdAt={"7h"} username={"georgie"} profilepic={""} text={"shadow, o ouriço"} />
+							</VStack>
+							<Divider my={4} bg={"gray.800"} />
+							<PostFooter isProfilePage={true} />
 						</Flex>
 					</Flex>
 				</ModalBody>
